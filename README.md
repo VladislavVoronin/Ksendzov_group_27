@@ -1,1 +1,0 @@
-# Ksendzov_group_27
