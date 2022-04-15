@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<Bug_id>2</Bug_id>
+	<Title>Ошибка при попытке авторизации</Title>
+	<Project>test.ru</Project>
+	<Severity>Blocker</Severity>
+	<Priority>ASAP</Priority>
+	<Environment>Win 10.0.19042 Chrome 98.0.4758.102 (Официальная сборка), (64 бит)</Environment>
+	<Precondition>
+		<Step_1>Открыть вебсайт test.ru</Step_1>
+	</Precondition>
+	<STR>
+		<Step_1>Ввести логин и пароль</Step_1>	
+		<Step_2>Нажать кнопку "Войти"</Step_2>
+	</STR>
+	<AR>Пользователь входит в личный кабинет</AR>
+	<ER>Происходит бесконечная загрузка, нет ответа от сервера</ER>
+</root>

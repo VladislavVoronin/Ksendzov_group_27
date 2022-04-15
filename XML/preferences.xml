@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<men> 
+		<man_id_1> 
+		    <Favourite> 
+			    <movie>Grown Ups</movie> 
+			    <serial>Legend of the Seeker</serial>
+			    <food>Pilaf</food>
+			    <season>Summer</season>
+			    <country_to_visit>Venice</country_to_visit>
+		    </Favourite>  
+		</man_id_1>
+	</men>
+</root>

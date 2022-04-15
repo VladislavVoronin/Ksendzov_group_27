@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <Learning_skill count="2">
+    <Hard>
+      <skill>SQL</skill>
+      <skill>APl</skill>
+      <skill>JS</skill>
+      <skill>Pyton</skill>
+    </Hard>
+    <Soft> 
+      <skill>Creativity</skill>
+      <skill>Communication</skill>
+      <skill>Team Work</skill>
+    </Soft>
+  </Learning_skill> 
+</root>
