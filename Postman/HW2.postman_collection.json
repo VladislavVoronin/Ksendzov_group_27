@@ -96,6 +96,17 @@
 		},
 		{
 			"name": "user_info_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -144,14 +155,42 @@
 					"script": {
 						"exec": [
 							"var respData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"name manual\", function () {\r",
+							"    pm.expect(respData.name).to.eql(\"Vasya\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"age manual\", function () {\r",
+							"    pm.expect(respData.age).to.eql(\"25\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"salary manunal\", function () {\r",
+							"    pm.expect(respData.salary).to.eql(1500);\r",
+							"});\r",
+							"\r",
 							"var reqData = request.data;\r",
+							"var req_name = reqData.name\r",
+							"var req_age = reqData.age\r",
 							"var req_salary = +reqData.salary\r",
-							"console.log(respData.salary)\r",
 							"\r",
+							"pm.test(\"name automatic\", function () {\r",
+							"    pm.expect(respData.name).to.eql(req_name);\r",
+							"});\r",
 							"\r",
-							"pm.test(\"Response body\", function () {\r",
+							"pm.test(\"age automatic\", function () {\r",
+							"    pm.expect(respData.age).to.eql(req_age);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"salary automatic\", function () {\r",
 							"    pm.expect(respData.salary).to.eql(req_salary);\r",
-							"});"
+							"});\r",
+							"\r",
+							"console.log(respData.family)\r",
+							"\r",
+							"pm.test(\"u_salary_1_5_year\", function () {\r",
+							"    pm.expect(respData.family.u_salary_1_5_year).to.eql((req_salary)*4);\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
