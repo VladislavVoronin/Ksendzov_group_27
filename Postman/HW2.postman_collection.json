@@ -101,7 +101,57 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							""
+							"// 1. Вставить параметр salary из окружения в request\r",
+							"// 2. Вставить параметр age из окружения в age\r",
+							"// 3. Вставить параметр name из окружения в name\r",
+							"// 4. Отправить запрос.\r",
+							"// 5. Статус код 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// 6. Спарсить response body в json.\r",
+							"// 7. Спарсить request.\r",
+							"var respData = pm.response.json();\r",
+							"var reqData = request.data;\r",
+							"var req_name = reqData.name\r",
+							"var req_age = reqData.age\r",
+							"var req_salary = +reqData.salary\r",
+							"\r",
+							"// 8. Проверить, что json response имеет параметр start_qa_salary\r",
+							"pm.test(\"Наличие start_qa_salary\", function () {\r",
+							"    pm.expect(respData).to.have.property(\"start_qa_salary\");\r",
+							"});\r",
+							"\r",
+							"// 9. Проверить, что json response имеет параметр qa_salary_after_6_months\r",
+							"pm.test(\"Наличие qa_salary_after_6_months\", function () {\r",
+							"    pm.expect(respData).to.have.property(\"qa_salary_after_6_months\");\r",
+							"});\r",
+							"\r",
+							"// 10. Проверить, что json response имеет параметр qa_salary_after_12_months\r",
+							"pm.test(\"Наличие qa_salary_after_12_months\", function () {\r",
+							"    pm.expect(respData).to.have.property(\"qa_salary_after_12_months\");\r",
+							"});\r",
+							"\r",
+							"// 11. Проверить, что json response имеет параметр qa_salary_after_1.5_year\r",
+							"pm.test(\"Наличие qa_salary_after_1.5_year\", function () {\r",
+							"    pm.expect(respData).to.have.property(\"qa_salary_after_1.5_year\");\r",
+							"});\r",
+							"\r",
+							"// 12. Проверить, что json response имеет параметр qa_salary_after_3.5_years\r",
+							"pm.test(\"Наличие qa_salary_after_3.5_years\", function () {\r",
+							"    pm.expect(respData).to.have.property(\"qa_salary_after_3.5_years\");\r",
+							"});\r",
+							"\r",
+							"// 13. Проверить, что json response имеет параметр person\r",
+							"pm.test(\"Наличие qa_salary_after_3.5_years\", function () {\r",
+							"    pm.expect(respData).to.have.property(\"person\");\r",
+							"});\r",
+							"\r",
+							"// 14. Проверить, что параметр start_qa_salary равен salary из request (salary забрать из request.)\r",
+							"pm.test(\"start_qa_salary забирается верно \", function () {\r",
+							"    pm.expect(respData.start_qa_salary).to.eql((req_salary));\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -115,17 +165,17 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "Svetlana",
+							"value": "{{name}}",
 							"type": "text"
 						},
 						{
 							"key": "age",
-							"value": "27",
+							"value": "{{age}}",
 							"type": "text"
 						},
 						{
 							"key": "salary",
-							"value": "1500",
+							"value": "{{salary}}",
 							"type": "text"
 						}
 					]
@@ -205,8 +255,7 @@
 							"// 12. Проверить что u_salary_1_5_year в ответе равно salary*4 (salary забрать из request)\r",
 							"pm.test(\"u_salary_1_5_year\", function () {\r",
 							"    pm.expect(respData.family.u_salary_1_5_year).to.eql((req_salary)*4);\r",
-							"});\r",
-							""
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -294,7 +343,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/object_info_2?name=Kate&age=26&salary=1200",
+					"raw": "http://162.55.220.72:5005/object_info_2?name=Kate&age=26&salary=1500",
 					"protocol": "http",
 					"host": [
 						"162",
@@ -317,7 +366,7 @@
 						},
 						{
 							"key": "salary",
-							"value": "1200"
+							"value": "1500"
 						}
 					]
 				}
@@ -500,7 +549,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/object_info_4?name=Kate&age=25&salary=2000",
+					"raw": "http://162.55.220.72:5005/object_info_4?name=Kate&age=25&salary=1500",
 					"protocol": "http",
 					"host": [
 						"162",
@@ -523,7 +572,7 @@
 						},
 						{
 							"key": "salary",
-							"value": "2000"
+							"value": "1500"
 						}
 					]
 				}
