@@ -34,9 +34,18 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"// 1. Отправить запрос.\r",
+							"// 2. Статус код 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// 3. Проверить, что в body приходит правильный string\r",
 							"pm.test(\"First\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include(\"This is the first responce from server!\");\r",
-							"});"
+							"});\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -569,7 +578,7 @@
 							"\r",
 							"// 14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)\r",
 							"pm.test(\"salary 2-й элемент \", function () {\r",
-							"    pm.expect(respData.salary[1]).to.eql.toString((req_salary)*3);\r",
+							"    pm.expect(respData.salary[2]).to.eql.toString((req_salary)*3);\r",
 							"});\r",
 							"\r",
 							"// 15. Создать в окружении переменную name\r",
