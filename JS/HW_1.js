@@ -60,12 +60,23 @@ let age_3 = 60;
 if (age_1 < age_2) {
     console.log("You don’t have access cause your age is " + age_1 + ". It's less then")
 // 31. Если age_1 >=  age_2 и age_1 <  age_3, вывести в консоль “Welcome  !”
-} if (age_1 >= age_2 & age_1 < age_3) {
+} else if (age_1 >= age_2 & age_1 < age_3) {
     console.log("Welcome")
 // 32. Если age_1  > age_3, вывести в консоль “Keep calm and look Culture channel”.
-} if (age_1 > age_3) {
+} else if (age_1 > age_3) {
     console.log("Keep calm and look Culture channel")
 // 33. Иначе выводите “Technical work”.
 } else {
     console.log("Technical work")
 }
+
+// 1*:Преобразовать написанный код в 26-33 пунктах в функцию, принимающую на вход возраст.
+const checkAge = function (age) {
+    if (age < 18) {console.log("You don’t have access cause your age is " + age + ". It's less then")}
+    else if (age >= 18 & age_1 < 60) {console.log("Welcome")}
+    else if (age >= 60) {console.log("Welcome")}
+    else {console.log("Technical work")}
+}
+
+checkAge(17)
+
