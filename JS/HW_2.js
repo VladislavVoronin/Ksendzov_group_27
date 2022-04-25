@@ -13,18 +13,19 @@
 function validation (check_string) {
     if (typeof check_string == "string") 
     {
-        if (check_string.length < 5) {console.log("Min 5 symbol")} 
-        else if (check_string.length > 64) {console.log("Max 64 symbol")}
-        else if (/[a-z]/.test(check_string) == false) {console.log("Must be letter in string")}
-        else if (/[A-Z]/.test(check_string) == false) {console.log("Must be one uppercase letter")}
-        else if (/[0-9]/.test(check_string) == false) {console.log("Must be one number")}
-        else if (/\s/.test(check_string) == true) {console.log("String can't contain a space")}
-        else if (check_string.includes("@") == false) {console.log("Must be @")}
-        else if (check_string.length == 0) {console.log("String can't be empty")}
-        else {console.log("Введенные данные верные")}
+        let isValid = true
+        if (check_string.length < 5) {console.log("Min 5 symbol"), isValid=false} 
+        if (check_string.length > 64) {console.log("Max 64 symbol"), isValid=false}
+        if (/[a-z]/.test(check_string) == false) {console.log("Must be letter in string"), isValid=false}
+        if (/[A-Z]/.test(check_string) == false) {console.log("Must be one uppercase letter"), isValid=false}
+        if (/[0-9]/.test(check_string) == false) {console.log("Must be one number"), isValid=false}
+        if (/\s/.test(check_string) == true) {console.log("String can't contain a space"), isValid=false}
+        if (check_string.includes("@") == false) {console.log("Must be @"), isValid=false}
+        if (check_string.length == 0) {console.log("String can't be empty"), isValid=false}
+        if (isValid == true) {console.log("Валидация прошла успешно")}
     }
     else {console.log("It's not a string")};
 }
 
 
-validation("1qqQ   @")
+validation("1qq@Q")
