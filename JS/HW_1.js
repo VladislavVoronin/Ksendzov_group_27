@@ -89,4 +89,15 @@ checkAge(17)
 checkAge("18")
 checkAge(61)
 
+// 4***Преобразовать задание 3* таким образом, чтобы возраст вводится используя функцию prompt в привязанной верстке
+// const checkAge = function (age) {
+//     let num = Number (age); 
+//     if (typeof num == "number") { 
+//         if (num < 18) {console.log("You don’t have access cause your age is " + num + ". It's less then")}
+//         else if (num >= 18 & num < 60) {console.log("Welcome")}
+//         else if (num >= 60) {console.log("Keep calm and look Culture channel")}
+//         else {console.log("It's not a number")} 
+//     }
+// }
+// checkAge(prompt('Сколько тебе лет?'))
 
