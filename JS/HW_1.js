@@ -98,5 +98,5 @@ checkAge(61)
 //         else {alert("It's not a number")} 
 //     }
 // }
-// checkAge(prompt('Сколько тебе лет?'))
+// checkAge(prompt('How old is you?'))
 
