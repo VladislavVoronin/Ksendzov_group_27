@@ -92,10 +92,10 @@ checkAge(61)
 // const checkAge = function (age) {
 //     let num = Number (age); 
 //     if (typeof num == "number") { 
-//         if (num < 18) {console.log("You don’t have access cause your age is " + num + ". It's less then")}
-//         else if (num >= 18 & num < 60) {console.log("Welcome")}
-//         else if (num >= 60) {console.log("Keep calm and look Culture channel")}
-//         else {console.log("It's not a number")} 
+//         if (num < 18) {alert("You don’t have access cause your age is " + num + ". It's less then")}
+//         else if (num >= 18 & num < 60) {alert("Welcome")}
+//         else if (num >= 60) {alert("Keep calm and look Culture channel")}
+//         else {alert("It's not a number")} 
 //     }
 // }
 // checkAge(prompt('Сколько тебе лет?'))
