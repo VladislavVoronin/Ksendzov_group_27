@@ -85,7 +85,8 @@ const checkAge = function (age) {
     }
 }
 checkAge("q")
-checkAge("12")
-checkAge(25)
+checkAge(17)
+checkAge("18")
+checkAge(61)
 
 
