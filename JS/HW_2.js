@@ -14,15 +14,17 @@ function validation (check_string) {
     if (typeof check_string == "string") 
     {
         if (check_string.length < 5) {console.log("Min 5 symbol")} 
-        if (check_string.length > 64) {console.log("Max 64 symbol")}
-        if (/[a-z]/.test(check_string) == false) {console.log("Must be letter in string")}
-        if (/[A-Z]/.test(check_string) == false) {console.log("Must be one uppercase letter")}
-        if (/[0-9]/.test(check_string) == false) {console.log("Must be one number")}
-        if (check_string.includes("@") == false) {console.log("Must be @")}
-        if (check_string.length == 0) {console.log("String can't be empty")}
+        else if (check_string.length > 64) {console.log("Max 64 symbol")}
+        else if (/[a-z]/.test(check_string) == false) {console.log("Must be letter in string")}
+        else if (/[A-Z]/.test(check_string) == false) {console.log("Must be one uppercase letter")}
+        else if (/[0-9]/.test(check_string) == false) {console.log("Must be one number")}
+        else if (/\s/.test(check_string) == true) {console.log("String can't contain a space")}
+        else if (check_string.includes("@") == false) {console.log("Must be @")}
+        else if (check_string.length == 0) {console.log("String can't be empty")}
+        else {console.log("Введенные данные верные")}
     }
     else {console.log("It's not a string")};
 }
 
 
-validation("qqqq")
+validation("1qqQ   @")
