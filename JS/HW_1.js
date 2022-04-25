@@ -74,15 +74,18 @@ if (age_1 < age_2) {
 console.log("_________________________________________________________________________________________")
 console.log("Вывести в консоль результат работы функции с возрастами 17, 18, 61")
 // 2*:Преобразовать задание 1* таким образом, чтобы первым делом в функции проверялся тип данных. И если он не Number - кидалась ошибка.
+// 3**Преобразовать 2* таким образом, чтобы значение '2' (строка в которой лежит ТОЛЬКО ЦИФРА) пропускалось, преобразовываясь в number
 const checkAge = function (age) {
-    if (typeof age != "number") {console.log("It's not a number")} 
-        else if (age < 18) {console.log("You don’t have access cause your age is " + age + ". It's less then")}
-        else if (age >= 18 & age < 60) {console.log("Welcome")}
-        else if (age >= 60) {console.log("Keep calm and look Culture channel")}
-        else {console.log("Technical work")} 
+    let num = Number (age); 
+    if (typeof num == "number") { 
+        if (num < 18) {console.log("You don’t have access cause your age is " + num + ". It's less then")}
+        else if (num >= 18 & num < 60) {console.log("Welcome")}
+        else if (num >= 60) {console.log("Keep calm and look Culture channel")}
+        else {console.log("It's not a number")} 
     }
-checkAge("hi")
-checkAge(18)
-checkAge(61)
+}
+checkAge("q")
+checkAge("12")
+checkAge(25)
 
 
