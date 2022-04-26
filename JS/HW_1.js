@@ -76,14 +76,29 @@ console.log("Вывести в консоль результат работы ф
 // 2*:Преобразовать задание 1* таким образом, чтобы первым делом в функции проверялся тип данных. И если он не Number - кидалась ошибка.
 // 3**Преобразовать 2* таким образом, чтобы значение '2' (строка в которой лежит ТОЛЬКО ЦИФРА) пропускалось, преобразовываясь в number
 const checkAge = function (age) {
-    if (typeof Number (age) == "number") { 
-    if (age < 18) {console.log("You don’t have access cause your age is " + age + ". It's less then")}
-    else if (age >= 18 & age < 60) {console.log("Welcome")}
-    else if (age >= 60) {console.log("Keep calm and look Culture channel")}
-    else {console.log("It's not a number")} 
+    if (!isNaN(age)) {
+        if (age.length == 0) {
+            console.log("String can't be empty")
+        }    
+        else if (age < 18) {
+            console.log("You don't have access cause your age is " + age + ". It's less then")
+        }
+        else if (age >= 18 & age < 60) {
+            console.log("Welcome")
+        }
+        else if (age >= 60) {
+            console.log("Keep calm and look Culture channel")
+        }   
+    }   
+    else {
+        console.log("You write \"" + age +"\". " + "It's not a number")
+    }
 }
-}
-checkAge("q")
+
+checkAge("строка")
+checkAge("")
+checkAge("+")
+checkAge("строка с цифрой 9")
 checkAge(17)
 checkAge("18")
 checkAge(61)
@@ -92,7 +107,7 @@ checkAge(61)
 // const checkAge = function (age) {
 //     let num = Number (age); 
 //     if (typeof num == "number") { 
-//         if (num < 18) {alert("You don’t have access cause your age is " + num + ". It's less then")}
+//         if (num < 18) {alert("You don't have access cause your age is " + num + ". It's less then")}
 //         else if (num >= 18 & num < 60) {alert("Welcome")}
 //         else if (num >= 60) {alert("Keep calm and look Culture channel")}
 //         else {alert("It's not a number")} 

@@ -28,4 +28,4 @@ function validation (check_string) {
 }
 
 
-validation("1qq@Q")
+validation("")
