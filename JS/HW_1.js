@@ -77,25 +77,28 @@ console.log("Вывести в консоль результат работы ф
 // 3**Преобразовать 2* таким образом, чтобы значение '2' (строка в которой лежит ТОЛЬКО ЦИФРА) пропускалось, преобразовываясь в number
 const checkAge = function (age) {
     if (!isNaN(age)) {
-        if (age.length == 0) {
-            console.log("String can't be empty")
-        }    
-        else if (age < 18) {
-            console.log("You don't have access cause your age is " + age + ". It's less then")
+        if (/\s/.test(age) == true) {
+            console.log("String can't contain a space")
+        } else {
+            if (age.length == 0) {
+                console.log("String can't be empty")
+            }
+            else if (age < 18) {
+                console.log("You don't have access cause your age is " + age + ". It's less then")
+            }   
+            else if (age >= 18 & age < 60) {
+                console.log("Welcome")
+            }   
+            else if (age >= 60) {
+                console.log("Keep calm and look Culture channel")
+            }
         }
-        else if (age >= 18 & age < 60) {
-            console.log("Welcome")
-        }
-        else if (age >= 60) {
-            console.log("Keep calm and look Culture channel")
-        }   
-    }   
-    else {
-        console.log("You write \"" + age +"\". " + "It's not a number")
-    }
-}
+    } else {
+        console.log("You write \"" + age +"\". " + "It's not a number")}}
 
+    
 checkAge("строка")
+checkAge(" ")
 checkAge("")
 checkAge("+")
 checkAge("строка с цифрой 9")
