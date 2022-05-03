@@ -15,7 +15,7 @@ function validation (check_string) {
       if (check_string.length == 0) {
       console.log("String can't be empty")
       } else {
-         if (/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(check_string) == true) {         
+         if (/^([A-Za-z0-9_\-])+\@([A-Za-z0-9_\-\.])+\.([a-z]{2,4})$/.test(check_string) == true) {         
          let isValid = true
            if (check_string.length < 5) {
             console.log("Min 5 symbol"), isValid=false;
