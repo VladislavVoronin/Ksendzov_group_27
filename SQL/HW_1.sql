@@ -1,3 +1,11 @@
+--PostreSQL
+--IP: 159.69.151.133
+--Port: 5056
+--DB: qa_students_1
+--User: padawan_user_149
+--Pass: 123
+
+
 --1. Вывести все поля и все строки.
 select * from students;
 
