@@ -7,10 +7,10 @@
 
 
 
---1) РЎРѕР·РґР°С‚СЊ С‚Р°Р±Р»РёС†Сѓ employees
+--1) Создать таблицу employees
 --- id. serial,  primary key,
 --- employee_name. Varchar(50), not null
---РќР°РїРѕР»РЅРёС‚СЊ С‚Р°Р±Р»РёС†Сѓ employee 70 СЃС‚СЂРѕРєР°РјРё.
+--Наполнить таблицу employee 70 строками.
 
 
 
@@ -31,10 +31,10 @@ end $$;
 
 
 
---2) РЎРѕР·РґР°С‚СЊ С‚Р°Р±Р»РёС†Сѓ salary
+--2) Создать таблицу salary
 --- id. Serial  primary key,
 --- monthly_salary. Int, not null
---РќР°РїРѕР»РЅРёС‚СЊ С‚Р°Р±Р»РёС†Сѓ salary 15 СЃС‚СЂРѕРєР°РјРё:
+--Наполнить таблицу salary 15 строками:
 --- 1000
 --- 1100
 --- 1200
@@ -69,12 +69,12 @@ begin
 end $$;
 
 
---3) РЎРѕР·РґР°С‚СЊ С‚Р°Р±Р»РёС†Сѓ employee_salary
+--3) Создать таблицу employee_salary
 --- id. Serial  primary key,
 --- employee_id. Int, not null, unique
 --- salary_id. Int, not null
---РќР°РїРѕР»РЅРёС‚СЊ С‚Р°Р±Р»РёС†Сѓ employee_salary 40 СЃС‚СЂРѕРєР°РјРё:
---- РІ 10 СЃС‚СЂРѕРє РёР· 40 РІСЃС‚Р°РІРёС‚СЊ РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ employee_id
+--Наполнить таблицу employee_salary 40 строками:
+--- в 10 строк из 40 вставить несуществующие employee_id
 
 create table employee_salary (
 id serial primary key,
