@@ -7,10 +7,10 @@
 
 
 
---1) Ñîçäàòü òàáëèöó employees
+--1) Создать таблицу employees
 --- id. serial,  primary key,
 --- employee_name. Varchar(50), not null
---Íàïîëíèòü òàáëèöó employee 70 ñòðîêàìè.
+--Наполнить таблицу employee 70 строками.
 
 
 
@@ -29,10 +29,11 @@ FOR r IN 1..70
 end $$;
 
 
---2) Ñîçäàòü òàáëèöó salary
+
+--2) Создать таблицу salary
 --- id. Serial  primary key,
 --- monthly_salary. Int, not null
---Íàïîëíèòü òàáëèöó salary 15 ñòðîêàìè:
+--Наполнить таблицу salary 15 строками:
 --- 1000
 --- 1100
 --- 1200
@@ -67,12 +68,12 @@ begin
 end $$;
 
 
---3) Ñîçäàòü òàáëèöó employee_salary
+--3) Создать таблицу employee_salary
 --- id. Serial  primary key,
 --- employee_id. Int, not null, unique
 --- salary_id. Int, not null
---Íàïîëíèòü òàáëèöó employee_salary 40 ñòðîêàìè:
---- â 10 ñòðîê èç 40 âñòàâèòü íåñóùåñòâóþùèå employee_id
+--Наполнить таблицу employee_salary 40 строками:
+--- в 10 строк из 40 вставить несуществующие employee_id
 
 create table employee_salary (
 id serial primary key,
