@@ -14,7 +14,6 @@
 
 
 
-
 create table employees (
 id serial primary key,
 employee_name int not null
