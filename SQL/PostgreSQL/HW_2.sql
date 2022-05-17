@@ -1,4 +1,4 @@
---PostreSQL
+﻿--PostreSQL
 --IP: 159.69.151.133
 --Port: 5056
 --DB: qa_ddl_27_117
