@@ -6,6 +6,12 @@
 --Pass: 123
 
 
+--Обнулить Primal Key
+--ALTER SEQUENCE employee_salary_id_seq RESTART WITH 1;
+--UPDATE employee_salary SET id=nextval('employee_salary_id_seq');
+
+--Очистить таблицу
+--delete from employee_salary;
 
 --1) Создать таблицу employees
 --- id. serial,  primary key,
@@ -68,6 +74,7 @@ begin
 end $$;
 
 
+
 --3) Создать таблицу employee_salary
 --- id. Serial  primary key,
 --- employee_id. Int, not null, unique
@@ -86,11 +93,23 @@ BEGIN
 FOR i IN 1..40 
 	loop
 		if i < 30
-		then
-			INSERT INTO employee_salary (employee_id, salary_id) values(i,i);
-		elsif i > 30
-		then 
-			INSERT INTO employee_salary (employee_id, salary_id) values(i+20,i+20);
+			then
+				INSERT INTO employee_salary (employee_id, salary_id) values(i,i);
+		elsif i >= 30
+			then 
+				INSERT INTO employee_salary (employee_id, salary_id) values(i+100,i+100);
 		end if;
 	end loop;
-end $$;
+end $$
+
+--4)Создать таблицу roles
+--- id. Serial  primary key,
+--- role_name. int, not null, unique
+
+create table roles (
+id serial primary key,
+role_name int not null unique
+);
+
+--Поменять тип столба role_name с int на varchar(30)
+ALTER TABLE roles ALTER COLUMN role_name TYPE varchar(30);
