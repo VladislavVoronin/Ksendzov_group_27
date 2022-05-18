@@ -7,11 +7,11 @@
 
 
 --Обнулить Primal Key
---ALTER SEQUENCE employee_salary_id_seq RESTART WITH 1;
---UPDATE employee_salary SET id=nextval('employee_salary_id_seq');
+--ALTER SEQUENCE salary_id_seq RESTART WITH 1;
+--UPDATE salary SET id=nextval('salary_id_seq');
 
 --Очистить таблицу
---delete from employee_salary;
+--delete from salary;
 
 --1) Создать таблицу employees
 --- id. serial,  primary key,
@@ -66,7 +66,7 @@ monthly_salary int not null
 DO $$
 DECLARE salary1 integer := 1000;
 begin
-	while salary1 < 2500
+	while salary1 <= 2500
 	loop
 	INSERT INTO salary (monthly_salary) values(salary1);
 	salary1 := salary1 + 100;
@@ -113,3 +113,6 @@ role_name int not null unique
 
 --Поменять тип столба role_name с int на varchar(30)
 ALTER TABLE roles ALTER COLUMN role_name TYPE varchar(30);
+insert into roles (role_name)
+
+
