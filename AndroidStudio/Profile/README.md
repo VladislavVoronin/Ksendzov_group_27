@@ -36,7 +36,7 @@ which events are applicable to which states.
 
 ### Bloc diagram
 
-![Bloc diagram](res/bloc_diagram.png)
+![Bloc diagram](https://github.com/vlad9710/Ksendzov_group_27/blob/main/AndroidStudio/Profile/bloc_diagram.png)
 
 [PersonalDataScreen](lib/features/profile/screens/personal_data_screen/personal_data_screen.dart), [PlaceResidenceScreen](lib/features/profile/screens/place_residence/place_residence_screen.dart), [InterestsScreen](lib/features/profile/screens/interests_screen/interests_screen.dart),
 and [AboutMeScreen](lib/features/profile/screens/about_me_screen/about_me_screen.dart) contain presentation logic, therefore they are written
