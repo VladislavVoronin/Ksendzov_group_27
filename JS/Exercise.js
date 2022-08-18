@@ -31,3 +31,25 @@ function leviossa (z,x) {
 }
 
 leviossa("text",4) //("твой текст", количество повторений)
+
+console.log("---------------------------------------------------------------------------------------------------------------")
+// 3**.  Написать функцию, которая принимает на вход слово. Задача функции посчитать и вывести в консоль, сколько в слове гласных, и сколько согласных букв
+
+function structure (word) {
+    if (/^[a-zA-Z]*$/.test(word) == true) {
+    var vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
+    j = 0
+    k = 0
+    for (let letter of word.toLowerCase()) {
+        if (vowels.includes(letter)){
+            j += 1
+        } else {
+            k +=1
+        }
+}
+console.log ('В слове '+ j + ' гласных и ' + k + ' согласных')
+} 
+else console.log("Введите в поле слово на английском языке")
+}
+
+structure('qwedgdwdfgtwreFFDDFgtdfgRsdfdsf')
