@@ -7,19 +7,27 @@ function Cesarb (word, shifr) {
         if (/^[a-zA-Z]*$/.test(word) !== true) {
             console.log("Введите слово на английском")
         } else {
+            if (Number(shifr) < -25 || Number(shifr) > 25) {
+                console.log("Введите значение не менее -25 и не более 25")
+            } else {
             let NewWord = [];
             for (let letter of word.toUpperCase()) {
             i = Alphabet.indexOf(letter) + Number(shifr)
-            if (i >= Alphabet.length) {
-                i = i - Alphabet.length
+            if ( i >= 0 && i <= Alphabet.length) {
                 NewWord.push(Alphabet[i])
             } else {
-                NewWord.push(Alphabet[i])
+                if (i > Alphabet.length) {
+                    i = i - Alphabet.length
+                    NewWord.push(Alphabet[i])
+                } if (i < 0) {
+                    i = Alphabet.length + i
+                    NewWord.push(Alphabet[i])
+                }
             }
-        }
-        console.log(NewWord.join(''))
+        } console.log(NewWord.join(''))
+        } 
     }
-}
+} 
 }
 
-Cesarb ("Hello", "-3") // (Твое слово, на сколько сдвинуть)
+Cesarb ("Hello", "-25") // (Твое слово, на сколько сдвинуть(значение от -25 до 25))
