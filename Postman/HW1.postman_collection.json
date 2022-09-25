@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3842d5ae-d724-4adf-96d0-7d4f838acafb",
+		"_postman_id": "e0f145e1-06aa-4685-bd45-8f42c9ecd67f",
 		"name": "HW1",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19349753"
 	},
 	"item": [
 		{
@@ -11,7 +12,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/",
+					"raw": "http://162.55.220.72:5006/",
 					"protocol": "http",
 					"host": [
 						"162",
@@ -19,7 +20,7 @@
 						"220",
 						"72"
 					],
-					"port": "5005",
+					"port": "5006",
 					"path": [
 						""
 					]
@@ -33,7 +34,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/first",
+					"raw": "http://162.55.220.72:5006/first",
 					"protocol": "http",
 					"host": [
 						"162",
@@ -41,7 +42,7 @@
 						"220",
 						"72"
 					],
-					"port": "5005",
+					"port": "5006",
 					"path": [
 						"first"
 					]
@@ -55,7 +56,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/get_method?name=Natalia&age=23",
+					"raw": "http://162.55.220.72:5006/get_method?name=Natalia&age=23",
 					"protocol": "http",
 					"host": [
 						"162",
@@ -63,7 +64,7 @@
 						"220",
 						"72"
 					],
-					"port": "5005",
+					"port": "5006",
 					"path": [
 						"get_method"
 					],
@@ -107,7 +108,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://162.55.220.72:5005/user_info_2",
+					"raw": "http://162.55.220.72:5006/user_info_2",
 					"protocol": "http",
 					"host": [
 						"162",
@@ -115,7 +116,7 @@
 						"220",
 						"72"
 					],
-					"port": "5005",
+					"port": "5006",
 					"path": [
 						"user_info_2"
 					]
@@ -125,6 +126,17 @@
 		},
 		{
 			"name": "user_info_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -143,13 +155,13 @@
 						},
 						{
 							"key": "salary",
-							"value": "14",
+							"value": "1500",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://162.55.220.72:5005/user_info_3",
+					"raw": "http://162.55.220.72:5006/user_info_3",
 					"protocol": "http",
 					"host": [
 						"162",
@@ -157,7 +169,7 @@
 						"220",
 						"72"
 					],
-					"port": "5005",
+					"port": "5006",
 					"path": [
 						"user_info_3"
 					]
@@ -171,7 +183,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/object_info_1?name=Kate&age=25&weight=48",
+					"raw": "http://162.55.220.72:5006/object_info_1?name=Kate&age=25&weight=48",
 					"protocol": "http",
 					"host": [
 						"162",
@@ -179,7 +191,7 @@
 						"220",
 						"72"
 					],
-					"port": "5005",
+					"port": "5006",
 					"path": [
 						"object_info_1"
 					],
@@ -207,7 +219,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/object_info_2?name=Kate&age=26&salary=1200",
+					"raw": "http://162.55.220.72:5006/object_info_2?name=Kate&age=26&salary=1200",
 					"protocol": "http",
 					"host": [
 						"162",
@@ -215,7 +227,7 @@
 						"220",
 						"72"
 					],
-					"port": "5005",
+					"port": "5006",
 					"path": [
 						"object_info_2"
 					],
@@ -243,7 +255,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/object_info_3?name=Kate&age=25&salary=1800",
+					"raw": "http://162.55.220.72:5006/object_info_3?name=Kate&age=25&salary=1800",
 					"protocol": "http",
 					"host": [
 						"162",
@@ -251,7 +263,7 @@
 						"220",
 						"72"
 					],
-					"port": "5005",
+					"port": "5006",
 					"path": [
 						"object_info_3"
 					],
@@ -279,7 +291,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://162.55.220.72:5005/object_info_4?name=Kate&age=34&salary=2000",
+					"raw": "http://162.55.220.72:5006/object_info_4?name=Kate&age=34&salary=2000",
 					"protocol": "http",
 					"host": [
 						"162",
@@ -287,7 +299,7 @@
 						"220",
 						"72"
 					],
-					"port": "5005",
+					"port": "5006",
 					"path": [
 						"object_info_4"
 					],
