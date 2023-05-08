@@ -1,0 +1,258 @@
+{
+	"info": {
+		"_postman_id": "73e4827c-5f9a-4a3e-90e6-d439cccd2d4c",
+		"name": "id_1-Checking_perfomance_filters",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19349753"
+	},
+	"item": [
+		{
+			"name": "Add a new pet to the store Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Парсинг ответа\r",
+							"var respData = pm.response.json();\r",
+							"\r",
+							"// Создание переменных для тестов: Название переменной{id тест-кейса}. В случае повторяющихся переменных добавляю в конце \"_{порядковый номер переменной}\"\r",
+							"pm.globals.set(\"petId1\", respData.id);\r",
+							"pm.globals.set(\"petStatus1\", respData.status);\r",
+							"pm.globals.set(\"petTagsId1_1\", respData.tags[0].id);\r",
+							"pm.globals.set(\"petTagsName1_1\", respData.tags[0].name);\r",
+							"pm.globals.set(\"petTagsId1_2\", respData.tags[1].id);\r",
+							"pm.globals.set(\"petTagsName1_2\", respData.tags[1].name);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Создание глобальной переменной url\r",
+							"pm.globals.set(\"baseUrl\", \"https://petstore.swagger.io/v2\");\r",
+							"\r",
+							"// Создание глобальной переменной для рандомного значения статуса питомца\r",
+							"var statusArr = [\"available\", \"pending\", \"sold\"]\r",
+							"var value = Math.floor(Math.random() * statusArr.length)\r",
+							"pm.globals.set(\"tagsValue1\", statusArr[value]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "scope",
+							"value": "read:pets write:pets",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://petstore.swagger.io/oauth/authorize",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "implicit",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{$randomFirstName}}\",\n    \"photoUrls\": [\n        \"{{$randomImageUrl}}\"\n    ],\n    \"id\": \"1{{$randomBankAccount}}\",\n    \"category\": {\n        \"id\": \"1{{$randomBankAccount}}\",\n        \"name\": \"{{$randomFirstName}}\"\n    },\n    \"tags\": [\n        {\n            \"id\": \"1{{$randomBankAccount}}\",\n            \"name\": \"{{$randomFirstName}}\"\n        },\n        {\n            \"id\": \"1{{$randomBankAccount}}\",\n            \"name\": \"{{$randomFirstName}}\"\n        }\n    ],\n    \"status\": \"{{tagsValue1}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pet",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find pet by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Парсинг ответа\r",
+							"var respData = pm.response.json();\r",
+							"\r",
+							"// Тесты\r",
+							"pm.test(\"Данные питомца совпадает\", function () {\r",
+							"    pm.expect(respData.id).to.eql(pm.globals.get(\"petId1\"));\r",
+							"    pm.expect(respData.tags.length).to.eql(2); /*Поскольку последующие 2 проверки направлены на проверку данных в массиве, надо убедиться что массив состоит из 2 элементов и в нем нет ничего лишнего */\r",
+							"    pm.expect(respData.tags.some(elem => elem.id == pm.globals.get(\"petTagsId1_1\") && elem.name == pm.globals.get(\"petTagsName1_1\"))).to.be.true;\r",
+							"    pm.expect(respData.tags.some(elem => elem.id == pm.globals.get(\"petTagsId1_2\") && elem.name == pm.globals.get(\"petTagsName1_2\"))).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/pet/{{petId1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						"{{petId1}}"
+					]
+				},
+				"description": "Returns a single pet"
+			},
+			"response": []
+		},
+		{
+			"name": "Finds pet by status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Парсинг ответа\r",
+							"var respData = pm.response.json();\r",
+							"\r",
+							"// Создание переменной для дальнейшего теста\r",
+							"var finalData = respData.find(elem => elem.id == pm.globals.get(\"petId1\"))\r",
+							"\r",
+							"// Тесты\r",
+							"pm.test(\"Данные питомца совпадает\", function () {\r",
+							"    pm.expect(finalData.tags.length).to.eql(2);\r",
+							"    pm.expect(finalData.tags.some(elem => elem.id == pm.globals.get(\"petTagsId1_1\") && elem.name == pm.globals.get(\"petTagsName1_1\"))).to.be.true;\r",
+							"    pm.expect(finalData.tags.some(elem => elem.id == pm.globals.get(\"petTagsId1_2\") && elem.name == pm.globals.get(\"petTagsName1_2\"))).to.be.true;\r",
+							"    pm.expect(finalData.status).to.eql(pm.globals.get(\"tagsValue1\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pet/findByStatus?status={{petStatus1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						"findByStatus"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "{{petStatus1}}",
+							"description": "(Required) Status values that need to be considered for filter"
+						}
+					]
+				},
+				"description": "Multiple status values can be provided with comma separated strings"
+			},
+			"response": []
+		},
+		{
+			"name": "Finds pet by tags",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Парсинг ответа\r",
+							"var respData = pm.response.json();\r",
+							"\r",
+							"// Создание переменной для дальнейшего теста\r",
+							"var finalData = respData.find(elem => elem.id == pm.globals.get(\"petId1\"))\r",
+							"\r",
+							"// Тесты\r",
+							"pm.test(\"Данные питомца совпадает\", function () {\r",
+							"    pm.expect(finalData.tags.length).to.eql(2);\r",
+							"    pm.expect(finalData.tags.some(elem => elem.id == pm.globals.get(\"petTagsId1_1\") && elem.name == pm.globals.get(\"petTagsName1_1\"))).to.be.true;\r",
+							"    pm.expect(finalData.tags.some(elem => elem.id == pm.globals.get(\"petTagsId1_2\") && elem.name == pm.globals.get(\"petTagsName1_2\"))).to.be.true;\r",
+							"    pm.expect(finalData.status).to.eql(pm.globals.get(\"tagsValue1\"));\r",
+							"});\r",
+							"\r",
+							"// Очистка переменных\r",
+							"pm.globals.unset(\"petId1\");\r",
+							"pm.globals.unset(\"petStatus1\");\r",
+							"pm.globals.unset(\"petTagsId1_1\",);\r",
+							"pm.globals.unset(\"petTagsName1_1\");\r",
+							"pm.globals.unset(\"petTagsId1_2\");\r",
+							"pm.globals.unset(\"petTagsName1_2\");\r",
+							"pm.globals.unset(\"tagsValue1\");\r",
+							"pm.globals.unset(\"baseUrl\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/pet/findByTags?tags={{petTagsName1_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pet",
+						"findByTags"
+					],
+					"query": [
+						{
+							"key": "tags",
+							"value": "{{petTagsName1_1}}",
+							"description": "(Required) Tags to filter by"
+						}
+					]
+				},
+				"description": "Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing."
+			},
+			"response": []
+		}
+	]
+}
